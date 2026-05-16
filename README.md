@@ -1,0 +1,1 @@
+# alqudiry_gocore
