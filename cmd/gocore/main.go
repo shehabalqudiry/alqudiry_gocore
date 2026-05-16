@@ -27,6 +27,22 @@ func main() {
 
 		commands.NewProject(os.Args[2])
 
+	case "make:module":
+		if len(os.Args) < 3 {
+			panic("Module name required")
+		}
+
+		commands.MakeModule(os.Args[2])
+
+	case "make":
+
+		if len(os.Args) < 4 || os.Args[2] != "module" {
+			fmt.Println("Usage: make module <module-name>")
+			os.Exit(1)
+		}
+
+		commands.MakeModule(os.Args[3])
+
 	default:
 		fmt.Printf("Unknown command: %s\n", command)
 	}
@@ -40,6 +56,8 @@ func help() {
 ╚══════════════════════════════╝
 
 Commands:
-    new <project-name>
+	new <project-name>
+	make:module <module-name>
+	make module <module-name>
 `)
 }
