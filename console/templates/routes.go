@@ -1,8 +1,12 @@
 package templates
 
-const RoutesTemplate = `package {{ .Package }}
+const RoutesTemplate = `package routes
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+
+	"{{ .ModulePath }}/handlers"
+)
 
 func RegisterRoutes(
 	app fiber.Router,

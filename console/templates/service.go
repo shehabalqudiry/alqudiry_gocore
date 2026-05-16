@@ -1,13 +1,17 @@
 package templates
 
-const ServiceTemplate = `package {{ .Package }}
+const ServiceTemplate = `package services
+
+import (
+	"{{ .ModulePath }}/repositories"
+)
 
 type {{ .Module }}Service struct {
-	repo *{{ .Module }}Repository
+	repo *repositories.{{ .Module }}Repository
 }
 
 func New{{ .Module }}Service(
-	repo *{{ .Module }}Repository,
+	repo *repositories.{{ .Module }}Repository,
 ) *{{ .Module }}Service {
 
 	return &{{ .Module }}Service{

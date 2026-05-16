@@ -1,6 +1,6 @@
 package templates
 
-const SwaggerTemplate = `package {{ .Package }}
+const SwaggerTemplate = `package swagger
 
 // @Summary List {{ .Module }}
 // @Tags {{ .Module }}

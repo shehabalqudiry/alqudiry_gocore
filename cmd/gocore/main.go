@@ -40,6 +40,29 @@ func main() {
 
 		commands.MakeAPI(os.Args[2])
 
+	case "make:model":
+
+		if len(os.Args) < 4 {
+			panic("Usage: make:model name --fields=")
+		}
+
+		name := os.Args[2]
+
+		fields := ""
+
+		for _, arg := range os.Args {
+
+			if len(arg) > 9 &&
+				arg[:9] == "--fields" {
+
+				fields = arg[10:]
+			}
+		}
+
+		commands.MakeModel(
+			name,
+			fields,
+		)
 	case "make":
 
 		if len(os.Args) < 4 || os.Args[2] != "module" {

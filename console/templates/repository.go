@@ -1,6 +1,6 @@
 package templates
 
-const RepositoryTemplate = `package {{ .Package }}
+const RepositoryTemplate = `package repositories
 
 type {{ .Module }}Repository struct{}
 

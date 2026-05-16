@@ -11,6 +11,7 @@ import (
 type TemplateData struct {
 	Package string
 	Module  string
+	ModulePath string
 }
 
 func GenerateModule(name string) {
@@ -25,26 +26,64 @@ func GenerateModule(name string) {
 		name,
 	)
 
-	utils.CreateDir(modulePath)
+	dirs := []string{
+
+		"entities",
+		"repositories",
+		"services",
+		"handlers",
+		"dto",
+		"validators",
+		"routes",
+		"swagger",
+		"mappers",
+		"tests",
+	}
+
+	for _, dir := range dirs {
+
+		utils.CreateDir(
+			filepath.Join(
+				modulePath,
+				dir,
+			),
+		)
+	}
 
 	data := TemplateData{
 		Package: name,
 		Module:  module,
+		ModulePath: "github.com/shehabalqudiry/alqudiry_gocore/internal/modules/" + name,
 	}
 
 	files := map[string]string{
 
-		"handler.go": templates.HandlerTemplate,
+		"handlers/handler.go":
+		templates.HandlerTemplate,
 
-		"service.go": templates.ServiceTemplate,
+		"services/service.go":
+		templates.ServiceTemplate,
 
-		"repository.go": templates.RepositoryTemplate,
+		"repositories/repository.go":
+		templates.RepositoryTemplate,
 
-		"model.go": templates.ModelTemplate,
+		"entities/entity.go":
+		templates.EntityTemplate,
 
-		"dto.go": templates.DTOTemplate,
+		"dto/create.go":
+		templates.DTOTemplate,
 
-		"routes.go": templates.RoutesTemplate,
+		"routes/routes.go":
+		templates.RoutesTemplate,
+
+		"validators/validator.go":
+		templates.ValidatorTemplate,
+
+		"swagger/swagger.go":
+		templates.SwaggerTemplate,
+
+		"mappers/mapper.go":
+		templates.MapperTemplate,
 	}
 
 	for file, tmpl := range files {

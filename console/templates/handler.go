@@ -1,15 +1,19 @@
 package templates
 
-const HandlerTemplate = `package {{ .Package }}
+const HandlerTemplate = `package handlers
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+
+	"{{ .ModulePath }}/services"
+)
 
 type {{ .Module }}Handler struct {
-	service *{{ .Module }}Service
+	service *services.{{ .Module }}Service
 }
 
 func New{{ .Module }}Handler(
-	service *{{ .Module }}Service,
+	service *services.{{ .Module }}Service,
 ) *{{ .Module }}Handler {
 
 	return &{{ .Module }}Handler{

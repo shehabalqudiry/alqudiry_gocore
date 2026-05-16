@@ -35,3 +35,10 @@ func ModuleName(name string) string {
 		Singular(name),
 	)
 }
+
+func ToPublicName(name string) string {
+
+	return cases.Title(
+		language.English,
+	).String(name)
+}
