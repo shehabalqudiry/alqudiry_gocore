@@ -33,6 +33,12 @@ func main() {
 		}
 
 		commands.MakeModule(os.Args[2])
+	case "make:api":
+		if len(os.Args) < 3 {
+			panic("API name required")
+		}
+
+		commands.MakeAPI(os.Args[2])
 
 	case "make":
 
