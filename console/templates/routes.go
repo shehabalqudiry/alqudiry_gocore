@@ -10,7 +10,7 @@ import (
 
 func RegisterRoutes(
 	app fiber.Router,
-	handler *{{ .Module }}Handler,
+	handler *handlers.{{ .Module }}Handler,
 ) {
 
 	group := app.Group("/{{ .Package }}")

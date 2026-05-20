@@ -95,7 +95,7 @@ func GenerateModel(
 		templates.ModelTemplate,
 
 		"dto/create.go":
-		templates.DTOTemplate,
+		templates.DTOFieldsTemplate,
 
 		"repositories/interface.go":
 		templates.RepositoryInterfaceTemplate,
